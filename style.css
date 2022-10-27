@@ -1,0 +1,44 @@
+p{
+    font-family: serif;
+    font-size: 1em;
+    line-height: 2ex;
+    color: goldenrod;
+}
+
+h1{
+    font-family: monospace;
+    font-size: 3em;
+    color:gold;
+    background-color: gray;
+    text-align: center;
+}
+
+h2{
+    font-size: large;
+    font-family: sans-serif;
+    color: blue;
+    background-color: rgb(176, 224, 230);
+}
+
+tr{
+    color: 	rgb(188, 143, 142);
+}
+
+ol{
+    color: blueviolet;
+}
+
+.container {
+    display: flex;
+    margin:auto;
+  }
+   
+.container div { 
+    margin: 5px;
+  }
+
+@media (max-width:720px){
+    .container{
+        flex-direction: column;
+    }
+}
