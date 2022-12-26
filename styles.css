@@ -1,0 +1,83 @@
+body {
+  background-color: rgba(54,60,74,255);
+} 
+.judul{
+  display: flex;
+  justify-content:center;
+  font-size: 1.5em;
+  font-family: 'Courier New', Courier, monospace;
+  color: white ;
+}
+
+.selections {
+  display: flex;
+  justify-content:center;
+  padding: 5px;
+}
+
+.selection {
+  background: rgba(51,61,90,255);
+  border-radius: 7px;
+  border-color: aliceblue;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: 100ms;
+}
+
+.gambar{
+width: 130px;
+height: 130px;
+align-items:baseline;
+}
+
+.selection:hover {
+  transform: scale(1.2);
+}
+
+.results {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, .5fr);
+  justify-items: center;
+  align-items: center;
+  margin: 0 425px;
+  flex-direction: column;
+  color: aliceblue; 
+  margin-top: -35px;
+}
+
+.p{
+  border: solid;
+  padding: 20px;
+  border-radius: 7px;
+  background: rgba(51,61,90,255);
+}
+
+.result-score {
+  margin-top: -10px;
+  font-size: 35px;
+  color: rgb(255, 255, 255);
+}
+
+.result-selection {
+  opacity: .5;
+}
+
+.result-selection.winner {
+  opacity: 1;
+  font-size: 1.5rem;
+}
+
+h2{
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  font-family: 'Courier New', Courier, monospace;
+  color: white ;
+}
+
+.hasil{
+  margin-top: 15px;
+}
