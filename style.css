@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(80, 205, 164);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+}
+h1{
+    color: rgb(0, 0, 0);
+}
+
+.container{
+background-color:#f7f5f5;
+    width: 50%;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+}

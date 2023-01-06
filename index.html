@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API | Praktikum WEB</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+       <h1>INFORMASI USER</h1>
+        <h3>Pencarian User</h3>
+        <input type="text" id="search" placeholder="Cari">
+        
+        <h3>Data User</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div id="detail"></div>
+
+        <script>
+            const tbody = document.querySelector('tbody')
+            const detail = document.getElementById('detail')
+            const searchForm = document.getElementById('search')
+            let usersData = [];
+
+            const loadData = async () => {
+                try {
+                    const url = await fetch('https://jsonplaceholder.typicode.com/users');
+                    usersData = await url.json();
+                    console.log(usersData)
+                    loadUserData(usersData);
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+
+            const loadUserData = (data) => {
+                let no = 1;
+                const output = data.map((x) => {
+                    return `
+                    <tr>
+                        <td>` + (no++) + `</td>
+                        <td>${x.name}</td>
+                        <td>${x.email}</td>
+                        <td><button onclick='showDetail(${x.id})'>Cek</button></td>
+                    </tr>
+                    `
+                }).join('')
+                tbody.innerHTML = output;
+            }
+
+            function showDetail(id) {
+                fetch('https://jsonplaceholder.typicode.com/users/' + id)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        detail.innerHTML = ''
+                        detail.insertAdjacentHTML('beforeend', `
+                        <h3> Detail User</h3>
+                        <table border="1">
+                            <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Jalan</th>
+                            <th>Kota</th>
+                            <th>Telepon</th>
+                            <th>Website</th>
+                            <th>Perusahaan</th>
+                        </tr> 
+                          <tr>
+                            <td>${data.name}</td>
+                            <td>${data.email}</td>
+                            <td>${data.address.street}</td>
+                            <td>${data.address.city}</td>
+                            <td>${data.phone}</td>
+                            <td>${data.website}</td>
+                            <td>${data.company.name}</td>
+                        </tr>  
+                        </table>                 
+                        `)
+                    })
+            }
+
+            searchForm.addEventListener('keyup', (y) => {
+                const value = y.target.value.toLowerCase();
+                const input = usersData.filter((data) => {
+                    return (
+                        data.name.toLowerCase().includes(value)
+                    )
+                })
+                loadUserData(input)
+            })
+            loadData()
+        </script>
+    </div>
+</body>
+</html>
